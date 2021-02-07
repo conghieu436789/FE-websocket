@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  products : Product[] = [];
+  products : any[] = [];
   searchList !: Product[];
   public search !: string;
   constructor(

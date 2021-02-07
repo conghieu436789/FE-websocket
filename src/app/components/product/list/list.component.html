@@ -23,7 +23,7 @@
     <td>{{product.description}}</td>
     <td>
       <button class="btn btn-primary" type="button" [routerLink]="['/product/update',product.id]">Edit</button> |
-      <button class="btn btn-primary" type="button" (click)="removeProduct(product.id)">Remove</button>
+      <button *ngIf="product.id" class="btn btn-primary" type="button" (click)="removeProduct(product.id)">Remove</button>
     </td>
   </tr>
   </tbody>

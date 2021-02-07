@@ -21,6 +21,7 @@ import { SocketComponent } from './components/socket/socket.component';
 // import {ScannerComponent} from './components/socket/scanner/scanner.component';
 // import {ScannerService} from './service/scanner.service';
 import {MessageService} from './service/message.service';
+import {UserService} from './service/user.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import {MessageService} from './service/message.service';
       multi: true
     },
     ProductService,
-    // ScannerService,
+    UserService,
     MessageService
   ],
   bootstrap: [AppComponent]
