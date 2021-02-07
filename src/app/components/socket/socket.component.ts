@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService} from '../../service/message.service';
 import {UserService} from '../../service/user.service';
+import {ChatMessage} from '../../models/chat-message';
 
 @Component({
   selector: 'app-socket',
@@ -8,8 +9,9 @@ import {UserService} from '../../service/user.service';
   styleUrls: ['./socket.component.css']
 })
 export class SocketComponent implements OnInit {
-  input: any;
+  input!: string;
   user: any;
+  friend: any;
   // @ts-ignore
   friends: any[];
   username: any;
@@ -34,7 +36,6 @@ export class SocketComponent implements OnInit {
           console.log(error);
         });
     }
-
   }
   getUser() {
     if (this.username) {
@@ -47,10 +48,32 @@ export class SocketComponent implements OnInit {
     }
 
   }
+  // sendMessage() {
+  //     if (this.input) {
+  //       this.messageService.sendMessage(this.input);
+  //       this.input = '';
+  //     }
+  // }
+
+  getUserChatTo(friend: any) {
+    // console.log(this.user.id);
+    this.friend = friend;
+    // console.log(this.friend.id);
+    this.messageService.initializeWebSocketConnection(this.user.id, this.friend.id);
+  }
   sendMessage() {
-      if (this.input) {
-        this.messageService.sendMessage(this.input);
-        this.input = '';
+    // console.log(this.user.id);
+    // console.log(this.friend.id);
+    if (this.input) {
+      let chatMessage:ChatMessage = {
+        content: this.input,
+        sender:  this.user,
+        receiver: this.friend,
+        // user_sender_id: this.user.id,
+        // user_receiver_id: this.friend.id
       }
+      this.messageService.sendMessageTo(this.user.id, this.friend.id, chatMessage);
+      this.input = '';
     }
+  }
 }
