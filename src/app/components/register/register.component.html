@@ -1,0 +1,53 @@
+<div class="container border mt-5">
+  <div class="d-block w-50 m-auto">
+      <form name="form" class="form-group" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <!--  <div class="container">-->
+        <div class="form-group text-primary">
+          <h1 class="text-capitalize text-center">Sign Up</h1>
+        </div>
+        <div class="form-group ">
+          <label for="name">Your Name</label>
+          <input type="text" class="form-control" name="name" id="name" [(ngModel)]="form.name" #name ="ngModel" required="required">
+        </div>
+        <div *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors?.required" class="text-danger">Name is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username" id="username" [(ngModel)]="form.username" #username="ngModel" required="required">
+        </div>
+        <div *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors?.required" class="text-danger">Username is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" id="email" [(ngModel)]="form.email" #email ="ngModel" required="required" email="email">
+        </div>
+        <div *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors?.required" class="text-danger">Email is required</div>
+          <div *ngIf="email.errors?.email" class="text-danger">Email must be a valid Email</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" id="password" [(ngModel)]="form.password" #password ="ngModel" required="required" minlength="6">
+        </div>
+        <div *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors?.required" class="text-danger">Password is required</div>
+          <div *ngIf="password.errors?.minlength" class="text-danger">Password at least 6 characters</div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Register</button>
+          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-danger" style="max-width: 300px">
+            Sign-up failed
+          </div>
+        </div>
+        <a routerLink="/login">You already have an account</a>
+        <!--  </div>-->
+      </form>
+
+  </div>
+</div>
+
+

@@ -1,0 +1,41 @@
+
+  <h1 class="text-capitalize text-primary">Edit product</h1>
+
+  <div class="container border mt-5">
+    <div class="d-block w-50 m-auto">
+      <form name="form" class="form-group" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group ">
+          <label for="id">Id</label>
+          <input type="text" class="form-control" name="id" id="id" [(ngModel)]="product.id" readonly>
+        </div>
+        <!--  <div class="container">-->
+        <div class="form-group ">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" name="title" id="title" [(ngModel)]="product.title" #title ="ngModel" required="required">
+        </div>
+        <div *ngIf="f.submitted && title.invalid">
+          <div *ngIf="title.errors?.required" class="text-danger">Title is required</div>
+        </div>
+        <div class="form-group ">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" name="description" id="description" [(ngModel)]="product.description" #description ="ngModel" required="required">
+        </div>
+        <div *ngIf="f.submitted && description.invalid">
+          <div *ngIf="description.errors?.required" class="text-danger">Author is required</div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Edit</button>
+          <button type="button" routerLink="/book" class="btn btn-warning">Cancel</button>
+          <div *ngIf="f.submitted" class="alert alert-danger" style="max-width: 300px">
+            Edit failed
+          </div>
+        </div>
+        <!--  </div>-->
+      </form>
+
+    </div>
+  </div>
+
+
+
