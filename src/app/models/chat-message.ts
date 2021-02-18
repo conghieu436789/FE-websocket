@@ -7,4 +7,5 @@ export class ChatMessage {
   user_receiver_id?:number;
   sender?: User;
   receiver?: User;
+  chat_room_id?: number;
 }
