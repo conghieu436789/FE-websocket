@@ -24,6 +24,7 @@ import {MessageService} from './service/message.service';
 import {UserService} from './service/user.service';
 import {ChatMessageService} from './service/chat-message.service';
 import {ChatRoomService} from './service/chat-room.service';
+import {NotificationService} from './service/notification.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {ChatRoomService} from './service/chat-room.service';
     UserService,
     MessageService,
     ChatMessageService,
-    ChatRoomService
+    ChatRoomService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
